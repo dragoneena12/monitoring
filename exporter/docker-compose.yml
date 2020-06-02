@@ -4,7 +4,7 @@ services:
     image: google/cadvisor:latest
     container_name: cadvisor
     restart: always
-    port:
+    ports:
       - '8080:8080'
     volumes:
       - /:/rootfs:ro
@@ -15,7 +15,7 @@ services:
     image: prom/node-exporter
     container_name: node_exporter
     restart: always
-    port:
+    ports:
       - '9100:9100'
     volumes:
       - /proc:/host/proc:ro
