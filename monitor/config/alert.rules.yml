@@ -1,0 +1,27 @@
+groups:
+  - name: basic
+    rules:
+    - alert: TargetDown
+      expr: up == 0
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        summary: "Target instance {{ $labels.instance }} down"
+        description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes."
+    - alert: CPUHighUsage
+      expr: 1 - sum by (mode)(irate(node_cpu_seconds_total{mode='idle'}[5m])) / 2 > 0.8
+      for: 5m
+      labels:
+        severity: warning
+      annotations:
+        summary: "cpu is high usage"                                                                                       
+        description: ""
+    - alert: ProbeDown
+      expr: probe_success == 0
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        summary: "Probe instance {{ $labels.instance }} down"
+        description: ""
