@@ -7,7 +7,7 @@ services:
     user: 0:0
     volumes:
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
-      - ./config/alert.rules:/etc/prometheus/alert.rules
+      - ./config/alert.rules.yml:/etc/prometheus/alert.rules.yml
       - ./data/prometheus:/prometheus
     networks:
       https_network:
