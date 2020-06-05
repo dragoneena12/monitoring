@@ -9,6 +9,7 @@ services:
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
       - ./config/alert.rules.yml:/etc/prometheus/alert.rules.yml
       - ./data/prometheus:/prometheus
+    command: "--storage.tsdb.retention=36500d"
     networks:
       https_network:
         ipv4_address: 172.24.0.7
